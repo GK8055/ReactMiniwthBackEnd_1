@@ -1,6 +1,6 @@
 import './index.css'
 // context
-import EmojisCountContext from '../../context/EmojisCountContext.js'
+import EmojisCountContext from '../../context/EmojisCountContext'
 import Header from '../Header'
 
 const emojisList = [
@@ -40,11 +40,11 @@ const Reports = () => (
   <EmojisCountContext.Consumer>
     {value => {
       const {
-        count_1,
-        count_2,
-        count_3,
-        count_4,
-        count_5,
+        veryHappyCount,
+        happyCount,
+        neutralCount,
+        sadCount,
+        verySadCount,
         modifiedDatesArr,
       } = value
 
@@ -62,7 +62,7 @@ const Reports = () => (
                   alt={emojisList[0].emojiName}
                   className="emoji_size"
                 />
-                <p className="emojis_count">{count_1}</p>
+                <p className="emojis_count">{veryHappyCount}</p>
               </div>
               <div className="emojis_score_container">
                 <p className="emoji_name">{emojisList[1].emojiName}</p>
@@ -71,7 +71,7 @@ const Reports = () => (
                   alt={emojisList[1].emojiName}
                   className="emoji_size"
                 />
-                <p className="emojis_count">{count_2}</p>
+                <p className="emojis_count">{happyCount}</p>
               </div>
               <div className="emojis_score_container">
                 <p className="emoji_name">{emojisList[2].emojiName}</p>
@@ -80,7 +80,7 @@ const Reports = () => (
                   alt={emojisList[2].emojiName}
                   className="emoji_size"
                 />
-                <p className="emojis_count">{count_3}</p>
+                <p className="emojis_count">{neutralCount}</p>
               </div>
               <div className="emojis_score_container">
                 <p className="emoji_name">{emojisList[3].emojiName}</p>
@@ -89,7 +89,7 @@ const Reports = () => (
                   alt={emojisList[3].emojiName}
                   className="emoji_size"
                 />
-                <p className="emojis_count">{count_4}</p>
+                <p className="emojis_count">{sadCount}</p>
               </div>
               <div className="emojis_score_container">
                 <p className="emoji_name">{emojisList[4].emojiName}</p>
@@ -98,7 +98,7 @@ const Reports = () => (
                   alt={emojisList[4].emojiName}
                   className="emoji_size"
                 />
-                <p className="emojis_count">{count_5}</p>
+                <p className="emojis_count">{verySadCount}</p>
               </div>
             </div>
           </div>

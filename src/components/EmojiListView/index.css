@@ -1,38 +1,81 @@
-.emoji_item {
-  border: 0px solid white;
-  width: 30px;
+@media (max-width: 767px) {
+  .emoji_item {
+    border: 0px solid white;
+    width: 20px;
+  }
+  .selected {
+    border: 0px solid white;
+    width: 30px;
+  }
+  .emoji_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 7px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0px;
+    text-align: center;
+    border: 0px solid;
+  }
+  .emoji_text {
+    font-family: 'Roboto';
+    font-size: 10px;
+    color: white;
+    width: 100px;
+  }
+  .emoji_list_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    width:30%;
+    margin-right: 5px;
+  }
 }
-.selected {
-  border: 0px solid white;
-  width: 50px;
-}
-.emoji_btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  padding: 20px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  margin: 0px;
-  text-align: center;
-  border: 0px solid;
-}
-.emoji_text {
-  font-family: 'Roboto';
-  font-size: 15px;
-  color: white;
-  width: 190px;
-}
-.emoji_list_item {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 1px;
-  width: 20%;
-  margin-right: 15px;
+
+@media (min-width: 768px) {
+  .emoji_item {
+    border: 0px solid white;
+    width: 30px;
+  }
+  .selected {
+    border: 0px solid white;
+    width: 50px;
+  }
+  .emoji_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0px;
+    text-align: center;
+    border: 0px solid;
+  }
+  .emoji_text {
+    font-family: 'Roboto';
+    font-size: 15px;
+    color: white;
+    width: 190px;
+  }
+  .emoji_list_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1px;
+    width: 20%;
+    margin-right: 15px;
+  }
 }

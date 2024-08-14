@@ -1,7 +1,18 @@
-.day_list_item {
-  font-family: 'Roboto';
-  font-size: 23px;
-  color: white;
-  margin-left: 29px;
-  width: 30%;
+@media (max-width: 767px) {
+  .day_list_item {
+    font-family: 'Roboto';
+    font-size: 15px;
+    color: white;
+    margin-left: 3px;
+    width: 30%;
+  }
+}
+@media (min-width: 768px) {
+  .day_list_item {
+    font-family: 'Roboto';
+    font-size: 23px;
+    color: white;
+    margin-left: 15px;
+    width: 30%;
+  }
 }

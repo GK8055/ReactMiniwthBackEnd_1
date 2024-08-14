@@ -2368,14 +2368,8 @@ class Home extends Component {
     monthsListDetails: initialMonthsList,
     navigatingIndex: 0,
     emojisListDropDownItem: emojisList[0].id,
-    daysListDropDownItem: daysList[0].id,
+    daysListDropDownItem: daysList[0].day,
     activeEmojiId: emojisList[0].id,
-    filterCount1: 0,
-    filterCOunt2: 0,
-    filterCount3: 0,
-    filterCount4: 0,
-    filterCount5: 0,
-    filterCount: 0,
   }
 
   onChangeRightArrowBtn = () => {
@@ -2423,7 +2417,6 @@ class Home extends Component {
             daysListDropDownItem,
             activeEmojiId,
             monthsListDetails,
-            filterCount,
           } = this.state
           // console.log('top', emojisListDropDownItem)
 
@@ -2517,8 +2510,8 @@ class Home extends Component {
             }
           })
 
-          const renderWeekdayList = (daysListDropDownItem, daysList) => {
-            if (daysListDropDownItem === daysList[0].id) {
+          const renderWeekdayList = () => {
+            if (daysListDropDownItem === daysList[0].day) {
               return sunDatesArr
             }
             if (daysListDropDownItem === daysList[1].day) {
@@ -2540,17 +2533,17 @@ class Home extends Component {
             return satDatesArr
           }
 
-          const list = renderWeekdayList(daysListDropDownItem, daysList)
+          const list = renderWeekdayList()
 
-          const renderSundayListEmojis = list => {
+          const renderSundayListEmojis = () => {
             const emojiObjFound = emojisList.find(
               each => each.id === emojisListDropDownItem,
             )
-            // console.log("emojiObj", emojiObjFound, list)
             let countEmoji = 0
-            const count = list.map(each => {
+            list.map(each => {
               if (each.emojiUrl === emojiObjFound.emojiUrl) {
-                return (countEmoji += 1)
+                countEmoji += 1
+                return countEmoji
               }
             })
             return countEmoji
@@ -2698,18 +2691,18 @@ class Home extends Component {
                         data-testid="previous-button"
                         onClick={this.onChangeLeftArrowBtn}
                       >
-                        <FaArrowLeft size={33} className="icon_size" />
+                        <FaArrowLeft size={30} className="icon_size" />
                       </button>
                       <h1 className="month_title">
                         {monthsListDetails[navigatingIndex].monthName}
                       </h1>
                       <button
                         className="btn_arr"
-                        data-testid="next-button"
                         type="button"
+                        data-testid="next-button"
                         onClick={this.onChangeRightArrowBtn}
                       >
-                        <FaArrowRight size={33} className="icon_size" />
+                        <FaArrowRight size={30} className="icon_size" />
                       </button>
                     </div>
                     <div className="days_dates_container">
