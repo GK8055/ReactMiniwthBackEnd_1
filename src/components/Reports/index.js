@@ -1,12 +1,5 @@
 import './index.css'
-import {
-  BarChart,
-  Bar,
-  YAxis,
-  XAxis,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
+import {BarChart, Bar, YAxis, XAxis, Legend} from 'recharts'
 
 // context
 import EmojisCountContext from '../../context/EmojisCountContext'
@@ -190,6 +183,9 @@ const Reports = () => (
                     name="verySadCountOnMonth"
                     fill="red"
                     barSize="20%"
+                    wrapperStyle={{
+                      borderRadius: 12,
+                    }}
                   />
                 </BarChart>
               </div>

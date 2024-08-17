@@ -2369,8 +2369,6 @@ class App extends Component {
     activeMonthId: initialMonthsList[0].monthName,
     monthsListDetails: initialMonthsList,
     navigatingIndex: 0,
-    emojisList,
-    daysList,
   }
 
   rightArrowClk = () => {

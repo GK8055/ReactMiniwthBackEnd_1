@@ -168,7 +168,7 @@ const Home = () => (
           each => each.id === emojisListDropDownItem,
         )
         let countEmoji = 0
-        const countList = list.map(each => {
+        list.map(each => {
           if (each.emojiUrl === emojiObjFound.emojiUrl) {
             countEmoji += 1
             return countEmoji

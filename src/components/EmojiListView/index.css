@@ -34,7 +34,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 10px;
-    width:30%;
+    width: 30%;
     margin-right: 5px;
   }
 }
@@ -67,7 +67,7 @@
     font-family: 'Roboto';
     font-size: 15px;
     color: white;
-    width: 190px;
+    width: 100px;
   }
   .emoji_list_item {
     display: flex;
@@ -76,6 +76,6 @@
     align-items: flex-start;
     padding: 1px;
     width: 20%;
-    margin-right: 15px;
+    margin-right: 17px;
   }
 }

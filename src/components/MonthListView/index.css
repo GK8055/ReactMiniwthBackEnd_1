@@ -1,4 +1,4 @@
-@media (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .date_btn {
     display: flex;
     padding: 1px;
@@ -8,14 +8,6 @@
     border-radius: 12px;
     background-color: #42404d;
     margin: 5px;
-  }
-  .date_btn_1 {
-    display: flex;
-    padding: 1px;
-    justify-content: flex-start;
-    border-radius: 12px;
-    background-color: #42404d;
-    align-items: center;
   }
   .date_ele {
     font-family: 'Roboto';
@@ -31,17 +23,92 @@
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 320px) {
   .date_btn {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* max-width: 50px;
-    height: 50px; */
-    width: 100%;
+    min-width: 20px;
+    min-height: 40px;
+    border-radius: 12px;
+    background-color: #42404d;
+    margin: 1px;
+  }
+
+  .date_ele {
+    font-family: 'Roboto';
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    margin: 3px;
+  }
+  .date_emoji_size {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+  }
+}
+@media screen and (max-width: 376px) and (min-width: 321px) {
+  .date_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 40px;
+    min-height: 50px;
     border-radius: 12px;
     background-color: #42404d;
     margin: 2px;
+  }
+
+  .date_ele {
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    margin: 3px;
+  }
+  .date_emoji_size {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+  }
+}
+
+@media screen and (max-width: 426px) and (min-width: 377px) {
+  .date_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 12px;
+    background-color: #42404d;
+    margin: 1px;
+  }
+
+  .date_ele {
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    margin: 3px;
+  }
+  .date_emoji_size {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+  }
+}
+@media screen and (max-width: 769px) and (min-width: 426px) {
+  .date_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 12px;
+    background-color: #42404d;
+    margin: 3px;
   }
 
   .date_ele {
