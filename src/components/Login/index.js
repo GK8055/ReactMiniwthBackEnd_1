@@ -3,33 +3,28 @@ import {useState} from 'react'
 import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
 
-const apiStatus = {
-  success: 'SUCCESS',
-  loading: 'LOADING',
-  faliure: 'Failure',
-}
+// const apiStatus = {
+//   success: 'SUCCESS',
+//   loading: 'LOADING',
+//   faliure: 'Failure',
+// }
 const Login = props => {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState(false)
-  const [status, setStatus] = useState(apiStatus.loading)
   const [showPassword, setShowPassword] = useState(false)
-
   const createJwtTokenAndNavigateToHome = token => {
     Cookies.set('jwt_token', token, {expires: 30})
-    setStatus(apiStatus.success)
     const {history} = props
     history.replace('/')
   }
 
   const setFailureStatus = msg => {
     setErrMsg(msg)
-    setStatus(apiStatus.faliure)
   }
 
   const getLoginData = async () => {
     const targetUrl = 'https://apis.ccbp.in/login'
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
     const url = targetUrl
     const userDetails = {username, password}
     const option = {

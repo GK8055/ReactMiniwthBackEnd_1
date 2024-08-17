@@ -1,6 +1,5 @@
 import './App.css'
 import {Component} from 'react'
-
 // context
 import {Switch, Route, Redirect} from 'react-router-dom'
 import EmojisCountContext from './context/EmojisCountContext'
@@ -2286,6 +2285,76 @@ const initialMonthsList = [
   },
 ]
 
+const daysList = [
+  {
+    id: '3639dd44-a5d5-11ec-b909-0242ac120002',
+    day: 'Sun',
+    dayNumber: 1,
+  },
+  {
+    id: '3639e17c-a5d5-11ec-b909-0242ac120002',
+    day: 'Mon',
+    dayNumber: 2,
+  },
+  {
+    id: '3639e37a-a5d5-11ec-b909-0242ac120002',
+    day: 'Tue',
+    dayNumber: 3,
+  },
+  {
+    id: '3639e532-a5d5-11ec-b909-0242ac120002',
+    day: 'Wed',
+    dayNumber: 4,
+  },
+  {
+    id: '3639e8c0-a5d5-11ec-b909-0242ac120002',
+    day: 'Thu',
+    dayNumber: 5,
+  },
+  {
+    id: '3639ea32-a5d5-11ec-b909-0242ac120002',
+    day: 'Fri',
+    dayNumber: 6,
+  },
+  {
+    id: '3639eb90-a5d5-11ec-b909-0242ac120002',
+    day: 'Sat',
+    dayNumber: 0,
+  },
+]
+const emojisList = [
+  {
+    id: '380e6284-a454-11ec-b909-0242ac120002',
+    emojiName: 'Very Happy',
+    emojiUrl:
+      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-very-happy.png',
+  },
+  {
+    id: '380e64f0-a454-11ec-b909-0242ac120002',
+    emojiName: 'Happy',
+    emojiUrl:
+      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-happy.png',
+  },
+  {
+    id: '380e6626-a454-11ec-b909-0242ac120002',
+    emojiName: 'Neutral',
+    emojiUrl:
+      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-neutral.png',
+  },
+  {
+    id: '380e6748-a454-11ec-b909-0242ac120002',
+    emojiName: 'Sad',
+    emojiUrl:
+      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-sad.png',
+  },
+  {
+    id: '380e69c8-a454-11ec-b909-0242ac120002',
+    emojiName: 'Very Sad',
+    emojiUrl:
+      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-very-sad.png',
+  },
+]
+
 class App extends Component {
   state = {
     modifiedDatesArr: [],
@@ -2294,6 +2363,48 @@ class App extends Component {
     neutralCount: 0,
     sadCount: 0,
     verySadCount: 0,
+    emojisListDropDownItem: emojisList[0].id,
+    daysListDropDownItem: daysList[0].day,
+    activeEmojiId: emojisList[0].id,
+    activeMonthId: initialMonthsList[0].monthName,
+    monthsListDetails: initialMonthsList,
+    navigatingIndex: 0,
+    emojisList,
+    daysList,
+  }
+
+  rightArrowClk = () => {
+    const {navigatingIndex} = this.state
+    if (navigatingIndex < 11) {
+      this.setState(prev => ({
+        navigatingIndex: prev.navigatingIndex + 1,
+      }))
+    }
+  }
+
+  leftArrowClk = () => {
+    const {navigatingIndex} = this.state
+    if (navigatingIndex > 0) {
+      this.setState(prev => ({
+        navigatingIndex: prev.navigatingIndex - 1,
+      }))
+    }
+  }
+
+  setActiveEMoji = id => {
+    this.setState({activeEmojiId: id})
+  }
+
+  setActiveEmojiName = value => {
+    this.setState({emojisListDropDownItem: value})
+  }
+
+  setActiveDayName = value => {
+    this.setState({daysListDropDownItem: value})
+  }
+
+  setActiveMonth = month => {
+    this.setState({activeMonthId: month})
   }
 
   setDateObj = monthObj => {
@@ -2326,7 +2437,6 @@ class App extends Component {
   }
 
   setHappyEmojisCount = signal => {
-    // console.log(signal)
     if (signal) {
       this.setState(prev => ({happyCount: prev.happyCount + 1}))
     } else {
@@ -2335,7 +2445,6 @@ class App extends Component {
   }
 
   setNeutralEmojisCount = signal => {
-    // console.log(signal)
     if (signal) {
       this.setState(prev => ({neutralCount: prev.neutralCount + 1}))
     } else {
@@ -2344,7 +2453,6 @@ class App extends Component {
   }
 
   setSadEmojisCount = signal => {
-    // console.log(signal)
     if (signal) {
       this.setState(prev => ({sadCount: prev.sadCount + 1}))
     } else {
@@ -2353,7 +2461,6 @@ class App extends Component {
   }
 
   setVerySadEmojisCount = signal => {
-    // console.log(signal)
     if (signal) {
       this.setState(prev => ({verySadCount: prev.verySadCount + 1}))
     } else {
@@ -2363,12 +2470,18 @@ class App extends Component {
 
   render() {
     const {
+      activeMonthId,
       veryHappyCount,
       happyCount,
       neutralCount,
       sadCount,
       verySadCount,
       modifiedDatesArr,
+      emojisListDropDownItem,
+      activeEmojiId,
+      daysListDropDownItem,
+      monthsListDetails,
+      navigatingIndex,
     } = this.state
     console.log(
       'app',
@@ -2381,6 +2494,14 @@ class App extends Component {
     return (
       <EmojisCountContext.Provider
         value={{
+          activeMonthId,
+          daysList,
+          emojisList,
+          monthsListDetails,
+          navigatingIndex,
+          emojisListDropDownItem,
+          activeEmojiId,
+          daysListDropDownItem,
           veryHappyCount,
           happyCount,
           neutralCount,
@@ -2393,15 +2514,21 @@ class App extends Component {
           setNeutralEmojisCount: this.setNeutralEmojisCount,
           setSadEmojisCount: this.setSadEmojisCount,
           setVerySadEmojisCount: this.setVerySadEmojisCount,
+          setActiveEMoji: this.setActiveEMoji,
+          setActiveEmojiName: this.setActiveEmojiName,
+          setActiveMonth: this.setActiveMonth,
+          setActiveDayName: this.setActiveDayName,
+          rightArrowClk: this.rightArrowClk,
+          leftArrowClk: this.leftArrowClk,
         }}
       >
-        <div className='app_container'>
+        <div className="app_container">
           <Switch>
-            <Route exact path='/login' component={Login} />
-            <ProtectedRoute exact path='/' component={Home} />
-            <ProtectedRoute exact path='/reports' component={Reports} />
-            <ProtectedRoute exact path='/not-found' component={NotFound} />
-            <Redirect to='/not-found' />
+            <Route exact path="/login" component={Login} />
+            <ProtectedRoute exact path="/" component={Home} />
+            <ProtectedRoute exact path="/reports" component={Reports} />
+            <ProtectedRoute exact path="/not-found" component={NotFound} />
+            <Redirect to="/not-found" />
           </Switch>
         </div>
       </EmojisCountContext.Provider>

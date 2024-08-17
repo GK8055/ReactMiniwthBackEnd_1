@@ -2,7 +2,7 @@ import './index.css'
 
 const MonthItem = props => {
   const {data, dateBtnClk} = props
-  const {date, id, emojiName, emojiUrl} = data
+  const {date, id, emojiUrl} = data
   const dateBtnClkItem = () => {
     dateBtnClk(id)
   }

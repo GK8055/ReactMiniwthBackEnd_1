@@ -49,3 +49,30 @@
   font-size: 20px;
   color: white;
 }
+.bar-charts_months_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+}
+.barcharts_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+}
+.month_drop_down_container {
+  padding: 10px;
+  background-color: white;
+  border-radius: 12px;
+  font-family: 'Roboto';
+  font-size: 23px;
+  color: black;
+  height: 10%;
+  margin-top: 35px;
+}
+.drop_down_ele {
+  padding: 10px;
+  border-radius: 12px;
+}

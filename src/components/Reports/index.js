@@ -1,52 +1,77 @@
 import './index.css'
+import {
+  BarChart,
+  Bar,
+  YAxis,
+  XAxis,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts'
+
 // context
 import EmojisCountContext from '../../context/EmojisCountContext'
 import Header from '../Header'
-
-const emojisList = [
-  {
-    id: '380e6284-a454-11ec-b909-0242ac120002',
-    emojiName: 'Very Happy',
-    emojiUrl:
-      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-very-happy.png',
-  },
-  {
-    id: '380e64f0-a454-11ec-b909-0242ac120002',
-    emojiName: 'Happy',
-    emojiUrl:
-      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-happy.png',
-  },
-  {
-    id: '380e6626-a454-11ec-b909-0242ac120002',
-    emojiName: 'Neutral',
-    emojiUrl:
-      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-neutral.png',
-  },
-  {
-    id: '380e6748-a454-11ec-b909-0242ac120002',
-    emojiName: 'Sad',
-    emojiUrl:
-      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-sad.png',
-  },
-  {
-    id: '380e69c8-a454-11ec-b909-0242ac120002',
-    emojiName: 'Very Sad',
-    emojiUrl:
-      'https://assets.ccbp.in/frontend/react-js/monthly-emojis/monthly-emojis-very-sad.png',
-  },
-]
 
 const Reports = () => (
   <EmojisCountContext.Consumer>
     {value => {
       const {
+        modifiedDatesArr,
+        setActiveMonth,
+        activeMonthId,
+        monthsListDetails,
+        emojisList,
         veryHappyCount,
         happyCount,
         neutralCount,
         sadCount,
         verySadCount,
-        modifiedDatesArr,
       } = value
+
+      const onChangeMonthName = event => {
+        setActiveMonth(event.target.value)
+      }
+      const dateListObj = modifiedDatesArr.find(
+        each => each.monthName === activeMonthId,
+      )
+      let veryHappyCountOnMonth = 0
+      let happyCountOnMonth = 0
+      let sadCountOnMonth = 0
+      let verySadCountOnMonth = 0
+      let neutralCountOnMonth = 0
+      if (dateListObj) {
+        dateListObj.dates.map(each => {
+          if (each.emojiUrl === emojisList[0].emojiUrl) {
+            veryHappyCountOnMonth += 1
+          } else if (each.emojiUrl === emojisList[1].emojiUrl) {
+            happyCountOnMonth += 1
+          } else if (each.emojiUrl === emojisList[2].emojiUrl) {
+            neutralCountOnMonth += 1
+          } else if (each.emojiUrl === emojisList[3].emojiUrl) {
+            sadCountOnMonth += 1
+          } else if (each.emojiUrl === emojisList[4].emojiUrl) {
+            verySadCountOnMonth += 1
+          }
+          return ''
+        })
+      }
+      const singleMonthEmojiCountList = [
+        {
+          monthName: activeMonthId,
+          veryHappyCountOnMonth,
+          happyCountOnMonth,
+          neutralCountOnMonth,
+          sadCountOnMonth,
+          verySadCountOnMonth,
+        },
+      ]
+
+      const DataFormatter = number => {
+        if (number > 1000) {
+          return `${(number / 1000).toString()}k`
+        }
+        return number.toString()
+      }
 
       return (
         <>
@@ -99,6 +124,87 @@ const Reports = () => (
                   className="emoji_size"
                 />
                 <p className="emojis_count">{verySadCount}</p>
+              </div>
+            </div>
+            <div className="bar-charts_months_container">
+              <div className="barcharts_container">
+                <h1 className="reports_title">Monthly Reports</h1>
+
+                <BarChart
+                  margin={{
+                    top: 5,
+                  }}
+                  width={500}
+                  height={600}
+                  data={singleMonthEmojiCountList}
+                >
+                  <XAxis
+                    dataKey="monthName"
+                    tick={{
+                      stroke: 'white',
+                      strokeWidth: 2,
+                    }}
+                  />
+
+                  <YAxis
+                    tickFormatt={DataFormatter}
+                    tick={{
+                      stroke: 'white',
+                      strokeWidth: 2,
+                    }}
+                  />
+                  <Legend
+                    wrapperStyle={{
+                      padding: 50,
+                      fontFamily: 'Roboto',
+                      fontSize: 15,
+                      display: 'flex',
+                    }}
+                  />
+                  <Bar
+                    dataKey="veryHappyCountOnMonth"
+                    name="veryHappyCountOnMonth"
+                    fill="orange"
+                    barSize="20%"
+                  />
+                  <Bar
+                    dataKey="happyCountOnMonth"
+                    name="happyCountOnMonth"
+                    fill="lightblue"
+                    barSize="20%"
+                  />
+                  <Bar
+                    dataKey="neutralCountOnMonth"
+                    name="neutralCountOnMonth"
+                    fill="blue"
+                    barSize="20%"
+                  />
+                  <Bar
+                    dataKey="sadCountOnMonth"
+                    name="sadCountOnMonth"
+                    fill="white"
+                    barSize="20%"
+                  />
+                  <Bar
+                    dataKey="verySadCountOnMonth"
+                    name="verySadCountOnMonth"
+                    fill="red"
+                    barSize="20%"
+                  />
+                </BarChart>
+              </div>
+              <div className="month_drop_down_container">
+                <select
+                  className="drop_down_ele"
+                  value={activeMonthId}
+                  onChange={onChangeMonthName}
+                >
+                  {monthsListDetails.map(each => (
+                    <option value={each.monthName} key={each.month}>
+                      {each.monthName}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
