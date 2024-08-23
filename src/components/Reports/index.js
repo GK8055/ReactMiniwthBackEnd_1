@@ -1,5 +1,5 @@
 import './index.css'
-import {BarChart, Bar, YAxis, XAxis, Legend} from 'recharts'
+import {BarChart, Bar, XAxis, Legend} from 'recharts'
 
 // context
 import EmojisCountContext from '../../context/EmojisCountContext'
@@ -13,10 +13,10 @@ const Reports = () => (
         setActiveMonth,
         activeMonthId,
         monthsListDetails,
-        emojisList,
         veryHappyCount,
         happyCount,
         neutralCount,
+        emojisList,
         sadCount,
         verySadCount,
       } = value
@@ -24,6 +24,7 @@ const Reports = () => (
       const onChangeMonthName = event => {
         setActiveMonth(event.target.value)
       }
+
       const dateListObj = modifiedDatesArr.find(
         each => each.monthName === activeMonthId,
       )
@@ -32,8 +33,9 @@ const Reports = () => (
       let sadCountOnMonth = 0
       let verySadCountOnMonth = 0
       let neutralCountOnMonth = 0
+
       if (dateListObj) {
-        dateListObj.dates.map(each => {
+        dateListObj.dates.forEach(each => {
           if (each.emojiUrl === emojisList[0].emojiUrl) {
             veryHappyCountOnMonth += 1
           } else if (each.emojiUrl === emojisList[1].emojiUrl) {
@@ -45,7 +47,6 @@ const Reports = () => (
           } else if (each.emojiUrl === emojisList[4].emojiUrl) {
             verySadCountOnMonth += 1
           }
-          return ''
         })
       }
       const singleMonthEmojiCountList = [
@@ -59,88 +60,71 @@ const Reports = () => (
         },
       ]
 
-      const DataFormatter = number => {
-        if (number > 1000) {
-          return `${(number / 1000).toString()}k`
-        }
-        return number.toString()
-      }
-
       return (
         <>
           <Header />
-          <div className="reports_container">
-            <h1 className="top_title">Overall Emojis Reports</h1>
-            <p className="reports_title">Overall Emojis Reports</p>
-            <div className="emojis_container">
-              <div className="emojis_score_container">
-                <p className="emoji_name">{emojisList[0].emojiName}</p>
+          <div className='reports_container'>
+            <h1 className='top_title'>Overall Emojis Reports</h1>
+            <div className='emojis_container'>
+              <div className='emojis_score_container'>
+                <p className='emoji_name'>{emojisList[0].emojiName}</p>
                 <img
                   src={emojisList[0].emojiUrl}
                   alt={emojisList[0].emojiName}
-                  className="emoji_size"
+                  className='emoji_size'
                 />
-                <p className="emojis_count">{veryHappyCount}</p>
+                <p className='emojis_count'>{veryHappyCount}</p>
               </div>
-              <div className="emojis_score_container">
-                <p className="emoji_name">{emojisList[1].emojiName}</p>
+              <div className='emojis_score_container'>
+                <p className='emoji_name'>{emojisList[1].emojiName}</p>
                 <img
                   src={emojisList[1].emojiUrl}
                   alt={emojisList[1].emojiName}
-                  className="emoji_size"
+                  className='emoji_size'
                 />
-                <p className="emojis_count">{happyCount}</p>
+                <p className='emojis_count'>{happyCount}</p>
               </div>
-              <div className="emojis_score_container">
-                <p className="emoji_name">{emojisList[2].emojiName}</p>
+              <div className='emojis_score_container'>
+                <p className='emoji_name'>{emojisList[2].emojiName}</p>
                 <img
                   src={emojisList[2].emojiUrl}
                   alt={emojisList[2].emojiName}
-                  className="emoji_size"
+                  className='emoji_size'
                 />
-                <p className="emojis_count">{neutralCount}</p>
+                <p className='emojis_count'>{neutralCount}</p>
               </div>
-              <div className="emojis_score_container">
-                <p className="emoji_name">{emojisList[3].emojiName}</p>
+              <div className='emojis_score_container'>
+                <p className='emoji_name'>{emojisList[3].emojiName}</p>
                 <img
                   src={emojisList[3].emojiUrl}
                   alt={emojisList[3].emojiName}
-                  className="emoji_size"
+                  className='emoji_size'
                 />
-                <p className="emojis_count">{sadCount}</p>
+                <p className='emojis_count'>{sadCount}</p>
               </div>
-              <div className="emojis_score_container">
-                <p className="emoji_name">{emojisList[4].emojiName}</p>
+              <div className='emojis_score_container'>
+                <p className='emoji_name'>{emojisList[4].emojiName}</p>
                 <img
                   src={emojisList[4].emojiUrl}
                   alt={emojisList[4].emojiName}
-                  className="emoji_size"
+                  className='emoji_size'
                 />
-                <p className="emojis_count">{verySadCount}</p>
+                <p className='emojis_count'>{verySadCount}</p>
               </div>
             </div>
-            <div className="bar-charts_months_container">
-              <div className="barcharts_container">
-                <h1 className="reports_title">Monthly Reports</h1>
-
+            <div className='bar-charts_months_container'>
+              <div className='barcharts_container'>
+                <h1 className='reports_title'>Monthly Reports</h1>
                 <BarChart
                   margin={{
                     top: 5,
                   }}
-                  width={500}
-                  height={600}
+                  width={300}
+                  height={500}
                   data={singleMonthEmojiCountList}
                 >
                   <XAxis
-                    dataKey="monthName"
-                    tick={{
-                      stroke: 'white',
-                      strokeWidth: 2,
-                    }}
-                  />
-
-                  <YAxis
-                    tickFormatt={DataFormatter}
+                    dataKey='monthName'
                     tick={{
                       stroke: 'white',
                       strokeWidth: 2,
@@ -155,43 +139,44 @@ const Reports = () => (
                     }}
                   />
                   <Bar
-                    dataKey="veryHappyCountOnMonth"
-                    name="veryHappyCountOnMonth"
-                    fill="orange"
-                    barSize="20%"
+                    dataKey='veryHappyCountOnMonth'
+                    name='veryHappyCountOnMonth'
+                    fill='orange'
+                    barSize='20%'
                   />
                   <Bar
-                    dataKey="happyCountOnMonth"
-                    name="happyCountOnMonth"
-                    fill="lightblue"
-                    barSize="20%"
+                    dataKey='happyCountOnMonth'
+                    name='happyCountOnMonth'
+                    fill='lightblue'
+                    barSize='20%'
                   />
                   <Bar
-                    dataKey="neutralCountOnMonth"
-                    name="neutralCountOnMonth"
-                    fill="blue"
-                    barSize="20%"
+                    dataKey='neutralCountOnMonth'
+                    name='neutralCountOnMonth'
+                    fill='yellow'
+                    barSize='20%'
                   />
                   <Bar
-                    dataKey="sadCountOnMonth"
-                    name="sadCountOnMonth"
-                    fill="white"
-                    barSize="20%"
+                    dataKey='sadCountOnMonth'
+                    name='sadCountOnMonth'
+                    fill='white'
+                    barSize='20%'
                   />
                   <Bar
-                    dataKey="verySadCountOnMonth"
-                    name="verySadCountOnMonth"
-                    fill="red"
-                    barSize="20%"
+                    dataKey='verySadCountOnMonth'
+                    name='verySadCountOnMonth'
+                    fill='skyblue'
+                    barSize='20%'
                     wrapperStyle={{
                       borderRadius: 12,
                     }}
                   />
                 </BarChart>
               </div>
-              <div className="month_drop_down_container">
+
+              <div className='month_drop_down_container'>
                 <select
-                  className="drop_down_ele"
+                  className='drop_down_ele'
                   value={activeMonthId}
                   onChange={onChangeMonthName}
                 >

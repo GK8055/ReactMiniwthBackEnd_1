@@ -320,7 +320,7 @@ const Home = () => (
       )
 
       const renderFilterCount = () => (
-        <p className="day_number">0{EMojisCount}</p>
+        <h1 className="day_number">0{EMojisCount}</h1>
       )
 
       return (

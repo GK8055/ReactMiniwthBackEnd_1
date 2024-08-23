@@ -103,7 +103,7 @@ const Login = props => {
         <label className="login_label_text" htmlFor="username">
           USERNAME
         </label>
-        <br />
+
         <input
           type="text"
           className="input_ele"
@@ -112,7 +112,6 @@ const Login = props => {
           value={username}
           onChange={onChangeUsername}
         />
-        <br />
 
         {getPassWordElement()}
         <div className="checkbox_container">

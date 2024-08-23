@@ -10,8 +10,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-@media (max-width-767px) {
-  .app_container {
+
+@media screen and (min-width: 769px) {
+  .login_app_container {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-slides/monthly-emojis-bg.png');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 769px) {
+  .login_app_container {
     background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-slides/monthly-emojis-bg.png');
     min-height: 100vh;
     display: flex;
@@ -21,14 +34,36 @@ body {
     width: 100%;
   }
 }
-@media (min-width: 768px) {
-  .app_container {
+
+@media (min-width: 377px) and (max-width: 426px) {
+  .login_app_container {
     background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-slides/monthly-emojis-bg.png');
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 376px) {
+  .login_app_container {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-slides/monthly-emojis-bg.png');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  .app_container {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-slides/monthly-emojis-bg.png');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     width: 100%;
   }
 }

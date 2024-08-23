@@ -2481,14 +2481,14 @@ class App extends Component {
       monthsListDetails,
       navigatingIndex,
     } = this.state
-    console.log(
-      'app',
-      veryHappyCount,
-      happyCount,
-      neutralCount,
-      sadCount,
-      verySadCount,
-    )
+    // console.log(
+    //   'app',
+    //   veryHappyCount,
+    //   happyCount,
+    //   neutralCount,
+    //   sadCount,
+    //   verySadCount,
+    // )
     return (
       <EmojisCountContext.Provider
         value={{
@@ -2520,7 +2520,7 @@ class App extends Component {
           leftArrowClk: this.leftArrowClk,
         }}
       >
-        <div className="app_container">
+        <div className="app_container login_app_container">
           <Switch>
             <Route exact path="/login" component={Login} />
             <ProtectedRoute exact path="/" component={Home} />

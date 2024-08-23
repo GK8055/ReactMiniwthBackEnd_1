@@ -1,78 +1,178 @@
-.reports_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 10px;
-  width: 100%;
+@media screen and (min-width: 601px) {
+  .reports_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    width: 100%;
+  }
+  .top_title {
+    font-family: 'Roboto';
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+  }
+  .reports_title {
+    font-family: 'Roboto';
+    font-size: 19px;
+    color: white;
+    font-weight: bold;
+  }
+  .emojis_container {
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    width: 100%;
+  }
+  .emojis_score_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 30%;
+    border-radius: 12px;
+    margin-right: 10px;
+    background-color: #4e5d72;
+  }
+  .emoji_name {
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: white;
+  }
+  .emoji_size {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  .emojis_count {
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: white;
+  }
+  .bar-charts_months_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+  }
+  .barcharts_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5px;
+    width: 50%;
+    height: 40%;
+  }
+
+  .month_drop_down_container {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 12px;
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: black;
+    height: 40%;
+    width: 40%;
+    margin-top: 25px;
+  }
+  .drop_down_ele {
+    padding: 10px;
+    width: 50%;
+    height: 60%;
+    border-radius: 12px;
+  }
 }
-.top_title {
-  font-family: 'Roboto';
-  font-size: 25px;
-  color: white;
-  font-weight: bold;
-}
-.reports_title {
-  font-family: 'Roboto';
-  font-size: 22px;
-  color: white;
-  font-weight: bold;
-}
-.emojis_container {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-.emojis_score_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  min-width: 170px;
-  border-radius: 15px;
-  margin-right: 10px;
-  background-color: #4e5d72;
-}
-.emoji_name {
-  font-family: 'Roboto';
-  font-size: 22px;
-  color: white;
-}
-.emoji_size {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-.emojis_count {
-  font-family: 'Roboto';
-  font-size: 20px;
-  color: white;
-}
-.bar-charts_months_container {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  width: 100%;
-}
-.barcharts_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 10px;
-}
-.month_drop_down_container {
-  padding: 10px;
-  background-color: white;
-  border-radius: 12px;
-  font-family: 'Roboto';
-  font-size: 23px;
-  color: black;
-  height: 10%;
-  margin-top: 35px;
-}
-.drop_down_ele {
-  padding: 10px;
-  border-radius: 12px;
+
+@media screen and (max-width: 600px) {
+  .reports_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+  }
+  .top_title {
+    font-family: 'Roboto';
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+  }
+  .reports_title {
+    font-family: 'Roboto';
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+  }
+  .emojis_container {
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    width: 100%;
+  }
+  .emojis_score_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    width: 30%;
+    border-radius: 10px;
+    margin-right: 5px;
+    background-color: #4e5d72;
+  }
+  .emoji_name {
+    font-family: 'Roboto';
+    font-size: 8px;
+    color: white;
+  }
+  .emoji_size {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+  .emojis_count {
+    font-family: 'Roboto';
+    font-size: 10px;
+    color: white;
+  }
+  .bar-charts_months_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5px;
+    width: 100%;
+  }
+  .barcharts_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 60%;
+    margin-left: 0px;
+    margin-top: 10px;
+    order: 2;
+  }
+  .month_drop_down_container {
+    padding: 5px;
+    display: flex;
+    order: 1;
+    justify-content: flex-end;
+    border-radius: 8px;
+    font-family: 'Roboto';
+    font-size: 10px;
+    color: black;
+    height: 10%;
+    width: 40%;
+    margin-top: 15px;
+  }
+  .drop_down_ele {
+    padding: 5px;
+    border-radius: 7px;
+  }
 }
