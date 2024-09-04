@@ -3,11 +3,6 @@ import {useState} from 'react'
 import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
 
-// const apiStatus = {
-//   success: 'SUCCESS',
-//   loading: 'LOADING',
-//   faliure: 'Failure',
-// }
 const Login = props => {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
@@ -24,17 +19,20 @@ const Login = props => {
   }
 
   const getLoginData = async () => {
-    const targetUrl = 'https://apis.ccbp.in/login'
-    const url = targetUrl
+    const url = 'https://blogappbackend-2.onrender.com/login'
     const userDetails = {username, password}
-    const option = {
+    const options = {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
       body: JSON.stringify(userDetails),
     }
 
-    const response = await fetch(url, option)
+    const response = await fetch(url, options)
     const data = await response.json()
-    // console.log(data, 'login')
+    console.log(data, 'login')
     if (response.ok) {
       createJwtTokenAndNavigateToHome(data.jwt_token)
     } else {
@@ -51,7 +49,9 @@ const Login = props => {
 
   const onChangeSubmit = event => {
     event.preventDefault()
-    getLoginData()
+    if (username !== '' && password !== '') {
+      getLoginData()
+    }
   }
 
   const getPassWordElement = () => {
